@@ -1,16 +1,24 @@
-import React from 'react'
+import React from "react"
+import { cn } from "@/lib/utils" // make sure you have cn set up!
 
 const Bentogird = () => {
+  const Card = ({
+    className,
+    children,
+  }: {
+    className?: string
+    children: React.ReactNode
+  }) => {
+    return <div className={cn("bg-white p-4", className)}>{children}</div>
+  }
+
   return (
-    <div className='max-w-7xl  border-neutral-200 bg-gray-100 mx-auto border-x min-h-screen'>
-        <div className='grid grid-cols-3 gap-10'>
-            <div className='h-40 w-full bg-red-400 col-span-1 '></div>
-            <div className='h-40 w-full bg-purple-300  col-span-2'></div>
-            <div className='h-40 w-full bg-yellow-400 col-span-2'></div>
-            <div className='h-40 w-full bg-orange-400 col-span-1'></div>
-        </div>
-        Hello world
-      
+    <div className="max-w-7xl border-neutral-200 bg-gray-100 mx-auto border-x min-h-screen">
+      <div className="grid grid-cols-2 gap-4 p-4">
+        <Card>Card 1</Card>
+        <Card className="bg-blue-100">Card 2</Card>
+      </div>
+      <p className="text-center mt-6">Hello world</p>
     </div>
   )
 }
