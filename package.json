@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-slot": "^1.2.3",
     "@tabler/icons-react": "^3.35.0",
@@ -16,6 +17,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "css": "^3.0.0",
+    "heroicon": "^0.0.2",
+    "heroicons": "^2.2.0",
     "lucide-react": "^0.544.0",
     "motion": "^12.23.24",
     "next": "15.5.3",

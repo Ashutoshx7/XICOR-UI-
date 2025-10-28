@@ -1,7 +1,7 @@
 "use client"
 import AnimatedButton from "@/components/ui/AnimatedButton"; // Import your animated button
 import ThemeToggle from "@/components/ui/ThemeToggle"; // Import ThemeToggle for light/dark mode
-
+import App from  "@/components/ui/SvgGrid";
 export default function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen relative">
@@ -10,7 +10,7 @@ export default function Home() {
         <ThemeToggle />
       </div>
 
-      <AnimatedButton />
+    <App></App>
     </div>
   )
 }
