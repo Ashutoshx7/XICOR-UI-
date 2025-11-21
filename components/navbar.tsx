@@ -61,7 +61,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
       <header className={cn("fixed top-0 inset-x-0 z-50 h-16 flex justify-center px-0", className)} {...props}>
         
         {/* Left Side Bar - Flexible width */}
-        <div className="flex-1 h-10 bg-foreground/5 backdrop-blur-xl z-20 relative min-w-0">
+        <div className="flex-1 h-10 bg-neutral-200 dark:bg-neutral-900 z-20 relative min-w-0">
           <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
             <line x1="0" y1="39.5" x2="100%" y2="39.5" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
             <line x1="0" y1="36.5" x2="100%" y2="36.5" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
@@ -74,7 +74,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
           {/* Left Slice (Corner) */}
           <div className="w-[50px] h-full relative shrink-0">
             {/* Glass Background */}
-            <div className="absolute inset-0 bg-foreground/5 backdrop-blur-xl" style={{ clipPath: "path('M0 0 H50 V64 C25 64 25 40 0 40 Z')" }} />
+            <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-900" style={{ clipPath: "path('M0 0 H50 V64 C25 64 25 40 0 40 Z')" }} />
             {/* Outlines */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 50 64">
               <path d="M0 39.5 C25 39.5 25 63.5 50 63.5" fill="none" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
@@ -85,7 +85,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
           {/* Center Slice (Flexible Content Area) */}
           <div className="flex-1 h-full relative min-w-0">
              {/* Background & Lines Layer */}
-             <div className="absolute inset-0 bg-foreground/5 backdrop-blur-xl">
+             <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-900">
                  <div className="absolute bottom-[0.5px] left-0 right-0 h-[0.5px] bg-foreground/5" />
                  <div className="absolute bottom-[3.5px] left-0 right-0 h-[0.5px] bg-foreground/5" />
              </div>
@@ -149,7 +149,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
           {/* Right Slice (Corner) */}
           <div className="w-[50px] h-full relative shrink-0">
             {/* Glass Background */}
-            <div className="absolute inset-0 bg-foreground/5 backdrop-blur-xl" style={{ clipPath: "path('M0 0 H50 V40 C25 40 25 64 0 64 Z')" }} />
+            <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-900" style={{ clipPath: "path('M0 0 H50 V40 C25 40 25 64 0 64 Z')" }} />
             {/* Outlines */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 50 64">
               <path d="M0 63.5 C25 63.5 25 39.5 50 39.5" fill="none" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
@@ -160,7 +160,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
         </div>
 
         {/* Right Side Bar - Flexible width */}
-        <div className="flex-1 h-10 bg-foreground/5 backdrop-blur-xl z-20 relative min-w-0">
+        <div className="flex-1 h-10 bg-neutral-200 dark:bg-neutral-900 z-20 relative min-w-0">
           <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
             <line x1="0" y1="39.5" x2="100%" y2="39.5" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
             <line x1="0" y1="36.5" x2="100%" y2="36.5" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
@@ -177,7 +177,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 bg-background/80 backdrop-blur-xl border-b border-foreground/5 p-4 md:hidden shadow-lg"
+            className="fixed inset-x-0 top-16 z-40 bg-neutral-50 dark:bg-neutral-900 border-b border-foreground/5 p-4 md:hidden shadow-lg"
           >
              <nav className="flex flex-col gap-2">
                {/* Combine all items */}
