@@ -58,7 +58,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
 
   return (
     <>
-      <header className={cn("fixed top-0 inset-x-0 z-50 h-16 flex justify-center px-0", className)} {...props}>
+      <header className={cn("fixed top-0 inset-x-0 z-50 h-16 flex px-0", className)} {...props}>
         
         {/* Left Side Bar - Flexible width */}
         <div className="flex-1 h-10 bg-neutral-200 dark:bg-neutral-900 z-20 relative min-w-0">
@@ -69,7 +69,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
         </div>
 
         {/* Responsive Notch Container - 3 Slices */}
-        <div className="flex h-16 relative z-10 shrink-0 max-w-[100vw]">
+        <div className="flex h-16 relative z-10 shrink-0">
           
           {/* Left Slice (Corner) */}
           <div className="w-[50px] h-full relative shrink-0">
