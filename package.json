@@ -14,6 +14,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@tabler/icons-react": "^3.35.0",
     "@tailwindcss/vite": "^4.1.16",
+    "@types/three": "^0.181.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "css": "^3.0.0",
@@ -26,7 +27,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind": "^4.0.0",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "three": "^0.181.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

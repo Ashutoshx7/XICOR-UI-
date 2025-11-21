@@ -1,16 +1,21 @@
 "use client"
-import AnimatedButton from "@/components/ui/AnimatedButton"; // Import your animated button
-import ThemeToggle from "@/components/ui/ThemeToggle"; // Import ThemeToggle for light/dark mode
-import App from  "@/components/ui/SvgGrid";
+import ThemeToggle from "@/components/ui/ThemeToggle"
+import { Navbar } from "@/components/navbar"
+import InfiniteLights from "@/components/InfiniteLights"
+
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen relative">
-      {/* Top-right theme toggle for testing */}
-      <div className="absolute top-4 right-4">
+    <main className="relative min-h-screen overflow-hidden bg-black text-white">
+      <div className="absolute top-4 right-4 z-50">
         <ThemeToggle />
       </div>
 
-    <App></App>
-    </div>
+      <div  >
+        <Navbar />
+      </div>
+      <div>
+        <InfiniteLights className="w-full h-full" />
+      </div>
+    </main>
   )
 }
