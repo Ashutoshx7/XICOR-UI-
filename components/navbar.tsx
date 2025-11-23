@@ -69,7 +69,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
         </div>
 
         {/* Responsive Notch Container - 3 Slices */}
-        <div className="flex h-16 relative z-10 shrink-0">
+        <div className="flex h-16 relative z-10 shrink-0 -ml-px">
           
           {/* Left Slice (Corner) */}
           <div className="w-[50px] h-full relative shrink-0">
@@ -83,7 +83,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
           </div>
 
           {/* Center Slice (Flexible Content Area) */}
-          <div className="flex-1 h-full relative min-w-0">
+          <div className="flex-1 h-full relative min-w-0 -ml-px">
              {/* Background & Lines Layer */}
              <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-900">
                  <div className="absolute bottom-[0.5px] left-0 right-0 h-[0.5px] bg-foreground/5" />
@@ -147,7 +147,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
           </div>
 
           {/* Right Slice (Corner) */}
-          <div className="w-[50px] h-full relative shrink-0">
+          <div className="w-[50px] h-full relative shrink-0 -ml-px">
             {/* Glass Background */}
             <div className="absolute inset-0 bg-neutral-200 dark:bg-neutral-900" style={{ clipPath: "path('M0 0 H50 V40 C25 40 25 64 0 64 Z')" }} />
             {/* Outlines */}
@@ -160,7 +160,7 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
         </div>
 
         {/* Right Side Bar - Flexible width */}
-        <div className="flex-1 h-10 bg-neutral-200 dark:bg-neutral-900 z-20 relative min-w-0">
+        <div className="flex-1 h-10 bg-neutral-200 dark:bg-neutral-900 z-20 relative min-w-0 -ml-px">
           <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
             <line x1="0" y1="39.5" x2="100%" y2="39.5" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
             <line x1="0" y1="36.5" x2="100%" y2="36.5" stroke="currentColor" strokeOpacity={0.05} strokeWidth={0.5} className="text-foreground" />
