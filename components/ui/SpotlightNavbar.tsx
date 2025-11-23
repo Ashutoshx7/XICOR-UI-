@@ -155,18 +155,18 @@ export function SpotlightNavbar({
                 <filter id="spotlight">
                     <feGaussianBlur
                         in="SourceAlpha"
-                        stdDeviation="1.8"
+                        stdDeviation="2"
                         result="blur"
                     />
                     <feSpecularLighting
                         result="lighting"
                         in="blur"
-                        surfaceScale="0.25"
-                        specularConstant="1.0"
-                        specularExponent="350"
+                        surfaceScale="0.3"
+                        specularConstant="1.8"
+                        specularExponent="280"
                         lightingColor="#ffffff"
                     >
-                        <fePointLight ref={spotlightLightRef} x="0" y="0" z="160" />
+                        <fePointLight ref={spotlightLightRef} x="0" y="0" z="150" />
                     </feSpecularLighting>
                     <feComposite
                         in="lighting"
@@ -176,16 +176,16 @@ export function SpotlightNavbar({
                     />
                 </filter>
                 <filter id="ambience">
-                    <feGaussianBlur in="SourceAlpha" stdDeviation="1.8" result="blur" />
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" />
                     <feSpecularLighting
                         result="lighting"
                         in="blur"
-                        surfaceScale="0.25"
-                        specularConstant="0.9"
-                        specularExponent="280"
+                        surfaceScale="0.3"
+                        specularConstant="1.5"
+                        specularExponent="220"
                         lightingColor="#ffffff"
                     >
-                        <fePointLight ref={ambienceLightRef} x="0" y="0" z="380" />
+                        <fePointLight ref={ambienceLightRef} x="0" y="0" z="350" />
                     </feSpecularLighting>
                     <feComposite in="lighting" in2="SourceAlpha" operator="in" result="litPaint" />
                 </filter>
