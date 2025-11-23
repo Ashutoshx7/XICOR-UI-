@@ -2,7 +2,7 @@
 import { SpotlightNavbar } from "@/components/ui/SpotlightNavbar"
 import { MaskedAvatars } from "@/components/ui/MaskedAvatars"
 import {Navbar} from "@/components/navbar"
-import GlassdockCore from "@/components/ui/glassdock"
+import Glassdock from "@/components/ui/glassdock"
 
 export default function Home() {
   
@@ -18,7 +18,7 @@ export default function Home() {
         <SpotlightNavbar  />
       </div>
 
-      <GlassdockCore></GlassdockCore>
+      <Glassdock></Glassdock>
       
       
     </main>
