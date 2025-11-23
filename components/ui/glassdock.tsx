@@ -27,11 +27,12 @@ const GlassdockCore = () => {
     
         <div
             className="
-        fixed bottom-6 inset-x-0 mx-auto 
+        fixed  items-center inset-x-4 bottom-6  mx-auto 
         flex justify-center space-x-8
-        rounded-3xl border border-black-500/50 
+        rounded-3xl  
         blur-in-xl  backdrop-blur-lg
         py-3 px-6 w-fit  inset-shadow-sm inset-shadow-slate-500/50
+        shadow inverted-colors:not-first-of-type:
       
         
        
@@ -47,10 +48,13 @@ const GlassdockCore = () => {
                     <Link
                         key={el.title}
                         href={el.href}
-                        className="
-              flex items-center justify-center w-10 h-12
-               text-gray-900 hover:text-gray-700
+                        className=" 
+              flex items-center justify-center w-12 h-12 space-x-1 
+               text-gray-900 hover:text-gray-700 rounded-full
+                border-neutral-200 bg-neutral-200  border-8 object-cover
+               hover:scale-125
               
+               
             "
                     >
                         <Icon className="w-full h-full" />
