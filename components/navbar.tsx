@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "motion/react"
 import { useTheme } from "next-themes"
 
 // Helper component for navigation links
-const NavLink = ({ href, icon: Icon, label }: { href: string; icon: any; label: string }) => (
+const NavLink = ({ href, icon: Icon, label }: { href: string; icon: React.ComponentType<{ className?: string }>; label: string }) => (
   <Link 
     href={href} 
     className="group flex items-center gap-1.5 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors whitespace-nowrap"

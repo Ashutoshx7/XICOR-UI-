@@ -13,7 +13,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 const GlassDock = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [direction, setDirection] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -27,7 +27,7 @@ const GlassDock = () => {
     { title: 'Github', icon: Github },
   ];
 
-  const handleMouseEnter = (index) => {
+  const handleMouseEnter = (index: number) => {
     if (hoveredIndex !== null && index !== hoveredIndex) {
       setDirection(index > hoveredIndex ? 1 : -1);
     }

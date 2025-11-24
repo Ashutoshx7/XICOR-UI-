@@ -97,7 +97,7 @@ export default function InfiniteLights({ className }: { className?: string }) {
     const createLights = (color: number, speed: number, offset: number) => {
       const curve = new THREE.LineCurve3(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -1))
       const baseGeo = new THREE.TubeGeometry(curve, 25, 1, 8, false)
-      const instanced = new THREE.InstancedBufferGeometry().copy(baseGeo as any)
+      const instanced = new THREE.InstancedBufferGeometry().copy(baseGeo as THREE.BufferGeometry)
       const nPairs = 50
       instanced.instanceCount = nPairs * 2
 
