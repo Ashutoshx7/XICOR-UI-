@@ -52,9 +52,9 @@ const GlassDock = () => {
         <div
           className="
             relative flex gap-4 items-center px-6 py-4 rounded-2xl
-            bg-white dark:bg-neutral-800
+            bg-white dark:bg-black shadow-inset
             border border-neutral-200 dark:border-neutral-700
-            shadow-lg dark:shadow-[0_4px_18px_rgba(0,0,0,0.4)]
+            shadow-lg dark:shadow-[0_4px_18px_rgba(0,0,0,0.8)]
           "
           onMouseLeave={() => {
             setHoveredIndex(null);
@@ -79,7 +79,7 @@ const GlassDock = () => {
                 <div
                   className="
                     px-5 py-2 rounded-lg
-                    bg-neutral-900 text-white
+                    bg-black text-white
                     dark:bg-white dark:text-black
                     shadow-md
                     flex items-center justify-center
@@ -87,7 +87,7 @@ const GlassDock = () => {
                     min-w-[100px]
                   "
                 >
-                  <div className="relative h-[16px] flex items-center justify-center overflow-hidden w-full">
+                  <div className="relative h-4 flex items-center justify-center overflow-hidden w-full">
                     <AnimatePresence mode="popLayout" custom={direction}>
                       <motion.span
                         key={links[hoveredIndex].title}
