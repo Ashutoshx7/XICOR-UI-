@@ -16,27 +16,27 @@ interface Activity {
 const activities: Activity[] = [
   {
     id: 1,
-    title: "Ice Catch",
-    description: "It's like regular catch, but it's on ice so it's cooler literally.",
-    image: "https://images.unsplash.com/photo-1723274565296-2945e2ebc306?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+    title: "Garou",
+    description: "The Hero Hunter from One Punch Man.",
+    image: "/garou1.jpg",
   },
   {
     id: 2,
-    title: "Mud Touching",
-    description: "Mud isn't going to touch itself.",
-    image: "https://images.unsplash.com/photo-1607930232028-f01079639b00?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+    title: "Johan Liebert",
+    description: "The Monster from Monster.",
+    image: "/johan.jpeg",
   },
   {
     id: 3,
-    title: "BMX Football",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-    image: "https://images.unsplash.com/photo-1677757103853-a304b6a182f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+    title: "Light Yagami",
+    description: "The anti-hero from Death Note.",
+    image: "/Light%20yagami.jpeg",
   },
   {
     id: 4,
-    title: "Shoe Tying",
-    description: "I love tying shoes. Bunny style. All the styles.",
-    image: "https://images.unsplash.com/photo-1676312830459-f6f13dfdd899?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+    title: "Vegeta",
+    description: "The Saiyan Prince from Dragon Ball Z.",
+    image: "/Vegeta.jpg",
   },
 ];
 
