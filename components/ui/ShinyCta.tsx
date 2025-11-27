@@ -2,213 +2,148 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
+import Link from "next/link";
 
-interface ShinyCtaProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ShinyCtaProps extends Omit<HTMLMotionProps<"button">, "ref"> {
   children: React.ReactNode;
+  href?: string;
   variant?: "default" | "primary" | "secondary" | "dark";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
-  fluid?: boolean; // full width
+  fluid?: boolean;
+  target?: string;
+  rel?: string;
 }
 
-const ShinyCta = React.forwardRef<HTMLButtonElement, ShinyCtaProps>(
+const MotionLink = motion(Link);
+
+const ShinyCta = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ShinyCtaProps>(
   (
     {
       className,
       children,
+      href,
       variant = "default",
       size = "md",
       fluid = false,
       isLoading = false,
+      disabled,
       ...props
     },
     ref
   ) => {
+    const Component = href ? MotionLink : motion.button;
+
+    // Size styles
     const sizeClasses = {
-      sm: "px-5 py-2 text-sm",
-      md: "px-10 py-5 text-lg",
-      lg: "px-14 py-6 text-xl",
+      sm: "h-10 px-6 text-sm",
+      md: "h-12 px-8 text-base",
+      lg: "h-14 px-10 text-lg",
+    };
+
+    // Gradient Colors for the border beam
+    const gradientColors = {
+      default: "from-transparent via-blue-500 to-transparent",
+      primary: "from-transparent via-white to-transparent",
+      secondary: "from-transparent via-neutral-500 to-transparent",
+      dark: "from-transparent via-white to-transparent",
+    };
+
+    // Inner Background Colors
+    const innerBgClasses = {
+      default: "bg-neutral-950",
+      primary: "bg-blue-600",
+      secondary: "bg-neutral-200",
+      dark: "bg-black",
+    };
+
+    // Text Colors
+    const textClasses = {
+      default: "text-white",
+      primary: "text-white",
+      secondary: "text-neutral-900",
+      dark: "text-white",
     };
 
     return (
-      <>
-        <motion.button
-          ref={ref}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          disabled={isLoading || props.disabled}
+      <Component
+        ref={ref as any}
+        href={href || ""}
+        disabled={disabled || isLoading}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className={cn(
+          "relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2 focus:ring-offset-neutral-50",
+          fluid && "w-full",
+          (disabled || isLoading) && "opacity-50 cursor-not-allowed",
+          className
+        )}
+        {...(props as any)}
+      >
+        {/* Spinning Gradient (The Border Beam) */}
+        <motion.div
+          className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]"
+          style={{
+            background: `conic-gradient(from 90deg at 50% 50%, #0000 0%, #0000 50%, ${variant === "default" ? "#3b82f6" :
+                variant === "primary" ? "#ffffff" :
+                  variant === "secondary" ? "#737373" : "#ffffff"
+              } 100%)`,
+          }}
+        />
+
+        {/* Inner Content (Covers the center) */}
+        <span
           className={cn(
-            "shiny-cta leading-[1.2] rounded-full transition-all duration-300",
-            sizeClasses[size],
-            fluid && "w-full",
-            props.disabled || isLoading ? "opacity-60 cursor-not-allowed" : "cursor-pointer",
-            className
+            "inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full px-3 py-1 text-sm font-medium backdrop-blur-3xl transition-colors",
+            innerBgClasses[variant],
+            textClasses[variant],
+            sizeClasses[size]
           )}
-          {...props}
         >
-          <span>{isLoading ? "Loading..." : children}</span>
-        </motion.button>
+          {/* Subtle Shimmer Overlay */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none opacity-20"
+            initial={{ x: "-100%" }}
+            animate={{ x: "100%" }}
+            transition={{
+              repeat: Infinity,
+              duration: 2,
+              ease: "linear",
+              repeatDelay: 1,
+            }}
+            style={{
+              background: "linear-gradient(90deg, transparent, white, transparent)",
+            }}
+          />
 
-        <style jsx global>{`
-          @import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500&display=swap");
-
-          :root {
-            --shiny-cta-bg: #000000;
-            --shiny-cta-bg-subtle: #1a1818;
-            --shiny-cta-fg: #ffffff;
-            --shiny-cta-highlight: blue;
-            --shiny-cta-highlight-subtle: #8484ff;
-          }
-
-          @property --gradient-angle {
-            syntax: "<angle>";
-            initial-value: 0deg;
-            inherits: false;
-          }
-
-          @property --gradient-angle-offset {
-            syntax: "<angle>";
-            initial-value: 0deg;
-            inherits: false;
-          }
-
-          @property --gradient-percent {
-            syntax: "<percentage>";
-            initial-value: 5%;
-            inherits: false;
-          }
-
-          @property --gradient-shine {
-            syntax: "<color>";
-            initial-value: white;
-            inherits: false;
-          }
-
-          .shiny-cta {
-            --animation: gradient-angle linear infinite;
-            --duration: 3s;
-            --shadow-size: 2px;
-            isolation: isolate;
-            position: relative;
-            overflow: hidden;
-            outline-offset: 4px;
-            font-family: inherit;
-            font-size: 1.125rem;
-            line-height: 1.2;
-            border: 1px solid transparent;
-            border-radius: 360px;
-            color: var(--shiny-cta-fg);
-
-            background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
-              conic-gradient(
-                  from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
-                  transparent,
-                  var(--shiny-cta-highlight) var(--gradient-percent),
-                  var(--gradient-shine) calc(var(--gradient-percent) * 2),
-                  var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
-                  transparent calc(var(--gradient-percent) * 4)
-                )
-                border-box;
-
-            box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
-          }
-
-          .shiny-cta::before,
-          .shiny-cta::after,
-          .shiny-cta span::before {
-            content: "";
-            pointer-events: none;
-            position: absolute;
-            inset-inline-start: 50%;
-            inset-block-start: 50%;
-            translate: -50% -50%;
-            z-index: -1;
-          }
-
-          .shiny-cta::before {
-            --size: calc(100% - var(--shadow-size) * 3);
-            --position: 2px;
-            --space: calc(var(--position) * 2);
-            width: var(--size);
-            height: var(--size);
-            background: radial-gradient(
-                circle at var(--position) var(--position),
-                white calc(var(--position) / 4),
-                transparent 0
-              )
-              padding-box;
-            background-size: var(--space) var(--space);
-            background-repeat: space;
-            mask-image: conic-gradient(
-              from calc(var(--gradient-angle) + 45deg),
-              black,
-              transparent 10% 90%,
-              black
-            );
-            border-radius: inherit;
-            opacity: 0.4;
-          }
-
-          .shiny-cta::after {
-            --animation: shimmer linear infinite;
-            width: 100%;
-            aspect-ratio: 1;
-            background: linear-gradient(
-              -50deg,
-              transparent,
-              var(--shiny-cta-highlight),
-              transparent
-            );
-            mask-image: radial-gradient(circle at bottom, transparent 40%, black);
-            opacity: 0.6;
-          }
-
-          .shiny-cta span {
-            position: relative;
-            z-index: 1;
-          }
-
-          .shiny-cta span::before {
-            --size: calc(100% + 1rem);
-            width: var(--size);
-            height: var(--size);
-            box-shadow: inset 0 -1ex 2rem 4px var(--shiny-cta-highlight);
-            opacity: 0;
-          }
-
-          .shiny-cta {
-            --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
-            transition: var(--transition);
-            transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
-          }
-
-          .shiny-cta,
-          .shiny-cta::before,
-          .shiny-cta::after {
-            animation: var(--animation) var(--duration),
-              var(--animation) calc(var(--duration) / 0.4) reverse paused;
-            animation-composition: add;
-          }
-
-          .shiny-cta span::before {
-            transition: opacity var(--transition);
-            animation: calc(var(--duration) * 1.5) breathe linear infinite;
-          }
-
-          @keyframes gradient-angle {
-            to {
-              --gradient-angle: 360deg;
-            }
-          }
-
-          @keyframes shimmer {
-            to {
-              rotate: 360deg;
-            }
-          }
-        `}</style>
-      </>
+          <span className="relative z-10 flex items-center gap-2">
+            {isLoading && (
+              <svg
+                className="animate-spin h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            )}
+            {children}
+          </span>
+        </span>
+      </Component>
     );
   }
 );

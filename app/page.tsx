@@ -3,6 +3,7 @@
 import { Navbar } from "@/components/navbar";
 import InteractiveBook, { BookPage } from "@/components/ui/interactive-book";
 import { Twitter } from "lucide-react";
+import ConfettiButton from "@/components/ui/confetti-button";
 
 const portfolioPages: BookPage[] = [
   {
@@ -10,17 +11,10 @@ const portfolioPages: BookPage[] = [
     title: "The Awakening",
     content: (
       <div className="flex flex-col items-center justify-center h-full text-center">
-        <p className="text-xl font-serif font-bold text-neutral-900 mb-4">
+        <p className="text-xl font-serif font-bold text-neutral-900 mb-6">
           "Look at me."
         </p>
-        <div className="relative w-64 h-40 mb-6 rounded-md shadow-md border border-neutral-200 transform rotate-2 hover:rotate-0 hover:scale-[2.5] hover:z-50 hover:shadow-2xl transition-all duration-300 cursor-pointer ease-out bg-white origin-center">
-          <img
-            src="/github-profile.png"
-            alt="GitHub Profile"
-            className="w-full h-full object-cover object-top rounded-md"
-          />
-        </div>
-        <p className="text-md font-serif text-neutral-800 leading-relaxed italic px-4">
+        <p className="text-lg font-serif text-neutral-800 leading-relaxed italic">
           "Look at my GitHub. The developer inside of me has grown this large."
         </p>
       </div>
@@ -151,6 +145,11 @@ export default function Home() {
           bookAuthor="A Monster Dev"
           pages={portfolioPages}
         />
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-8 pb-20">
+        <ConfettiButton>Confirm</ConfettiButton>
+        <ConfettiButton variant="white">Confirm</ConfettiButton>
+        <ConfettiButton variant="grey">Confirm</ConfettiButton>
       </div>
     </main>
   );
