@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { PerspectiveGrid } from "@/components/ui/perspective-grid";
 import { FlipText } from "@/components/ui/flip-text";
 import ConfettiButton from "@/components/ui/confetti-button";
+import { SmokeText } from "@/components/ui/smoke-text";
 
 export default function Home() {
   return (
@@ -27,9 +28,12 @@ export default function Home() {
             A collection of high-quality, interactive UI components built with React, Tailwind CSS, and Framer Motion.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center items-center">
             <ConfettiButton>Get Started</ConfettiButton>
             <ConfettiButton variant="white">Documentation</ConfettiButton>
+            <div className="px-4 py-2">
+              <SmokeText texts={["  Karn", "Artist", "Engineer"]} />
+            </div>
           </div>
         </div>
       </section>

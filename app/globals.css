@@ -516,6 +516,396 @@
   width: 1em;
   height: 1em;
   display: inline-flex;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+
+.planet:before {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 1500px;
+  aspect-ratio: 1;
+  left: 100%;
+  top: 50%;
+  z-index: -1;
+  transform: translateX(-50%) translateY(-50%);
+  background-image: radial-gradient(at 50% 50% in oklch,
+      color-mix(in oklch, skyblue, blue 80%),
+      color-mix(in oklch, skyblue, blue 10%) 19%,
+      color-mix(in oklch, skyblue, blue 20%) 20%,
+      color-mix(in oklch, skyblue, blue 80%),
+      color-mix(in oklch, blue, black 50%) 55%,
+      transparent 70%);
+}
+
+/* Logo Slider Component Styles */
+.container-slider-logo {
+  mask: linear-gradient(90deg, transparent, black 100px, black calc(100% - 100px), transparent);
+  -webkit-mask: linear-gradient(90deg, transparent, black 100px, black calc(100% - 100px), transparent);
+}
+
+.container-slider-logo[data-outline="true"] {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.blur-overlay.blur--left {
+  transform: rotate(180deg);
+}
+
+.blur-overlay div {
+  z-index: var(--index);
+  mask: linear-gradient(90deg,
+      transparent calc(var(--index) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 1) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 2) * calc((100 / var(--blurs)) * 1%)),
+      transparent calc((var(--index) + 3) * calc((100 / var(--blurs)) * 1%)));
+  -webkit-mask: linear-gradient(90deg,
+      transparent calc(var(--index) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 1) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 2) * calc((100 / var(--blurs)) * 1%)),
+      transparent calc((var(--index) + 3) * calc((100 / var(--blurs)) * 1%)));
+  backdrop-filter: blur(calc((var(--index, 0) * var(--blur, 0)) * 1px));
+}
+
+.ul-logos {
+  animation: slide calc(var(--speed) * 1s) linear infinite;
+}
+
+.ul-logos:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.33%);
+    /* Move by 1/3 since we triplicated the list */
+  }
+}
+
+[data-direction="right"] .ul-logos {
+  animation-direction: reverse;
+}
+
+/* Glowing Card Styles */
+@property --a {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.glowing-card {
+  overflow: hidden;
+  position: relative;
+  width: Min(12.5em, 80vmin);
+  aspect-ratio: 1;
+  border-radius: .5em;
+
+  /* Ensure the glow is visible behind the card content if needed, 
+     but keep isolation to prevent z-index issues with the page background */
+  isolation: isolate;
+  /* Keep a dark background for contrast, or remove if transparency is desired */
+
+  place-self: center;
+  place-content: center;
+  padding: .5em;
+  color: #ededed;
+  font: clamp(1em, 2vw + 2vh, 2em) sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
+  display: grid;
+}
+
+.glowing-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: -1em;
+  border: solid 1.25em;
+  border-image:
+    conic-gradient(from var(--a), #669900, #99cc33, #ccee66,
+      #006699, #3399cc, #990066, #cc3399,
+      #ff6600, #ff9900, #ffcc00, #669900) 1;
+  filter: blur(.75em);
+  animation: a 4s linear infinite;
+  content: '';
+}
+
+@keyframes a {
+  to {
+    --a: 1turn
+  }
+}
+
+/* Fluted Glass Effect Styles */
+@property --blink-opacity {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes blink-animation {
+
+  0%,
+  100% {
+    opacity: var(--blink-opacity, 1);
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes smoothBg {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.h1--scalingSize {
+  font-size: clamp(2rem, 8vw, 6rem);
+  /* Adjusted for better responsiveness */
+  position: relative;
+  isolation: isolate;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.h1--scalingSize::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: white;
+  text-shadow: 0 0 1px #ffffff;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: white;
+  -webkit-mask: linear-gradient(#000 0 0) luminance;
+  mask: linear-gradient(#000 0 0) luminance, alpha;
+  backdrop-filter: blur(19px) brightness(12.5);
+  -webkit-text-stroke: 1px white;
+  display: flex;
+  margin: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Icon Houdini Animation */
+.icon-houdini {
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+
+.planet:before {
+  content: "";
+  display: block;
+  position: fixed;
+  width: 1500px;
+  aspect-ratio: 1;
+  left: 100%;
+  top: 50%;
+  z-index: -1;
+  transform: translateX(-50%) translateY(-50%);
+  background-image: radial-gradient(at 50% 50% in oklch,
+      color-mix(in oklch, skyblue, blue 80%),
+      color-mix(in oklch, skyblue, blue 10%) 19%,
+      color-mix(in oklch, skyblue, blue 20%) 20%,
+      color-mix(in oklch, skyblue, blue 80%),
+      color-mix(in oklch, blue, black 50%) 55%,
+      transparent 70%);
+}
+
+/* Logo Slider Component Styles */
+.container-slider-logo {
+  mask: linear-gradient(90deg, transparent, black 100px, black calc(100% - 100px), transparent);
+  -webkit-mask: linear-gradient(90deg, transparent, black 100px, black calc(100% - 100px), transparent);
+}
+
+.container-slider-logo[data-outline="true"] {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.blur-overlay.blur--left {
+  transform: rotate(180deg);
+}
+
+.blur-overlay div {
+  z-index: var(--index);
+  mask: linear-gradient(90deg,
+      transparent calc(var(--index) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 1) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 2) * calc((100 / var(--blurs)) * 1%)),
+      transparent calc((var(--index) + 3) * calc((100 / var(--blurs)) * 1%)));
+  -webkit-mask: linear-gradient(90deg,
+      transparent calc(var(--index) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 1) * calc((100 / var(--blurs)) * 1%)),
+      black calc((var(--index) + 2) * calc((100 / var(--blurs)) * 1%)),
+      transparent calc((var(--index) + 3) * calc((100 / var(--blurs)) * 1%)));
+  backdrop-filter: blur(calc((var(--index, 0) * var(--blur, 0)) * 1px));
+}
+
+.ul-logos {
+  animation: slide calc(var(--speed) * 1s) linear infinite;
+}
+
+.ul-logos:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.33%);
+    /* Move by 1/3 since we triplicated the list */
+  }
+}
+
+[data-direction="right"] .ul-logos {
+  animation-direction: reverse;
+}
+
+/* Glowing Card Styles */
+@property --a {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.glowing-card {
+  overflow: hidden;
+  position: relative;
+  width: Min(12.5em, 80vmin);
+  aspect-ratio: 1;
+  border-radius: .5em;
+
+  /* Ensure the glow is visible behind the card content if needed, 
+     but keep isolation to prevent z-index issues with the page background */
+  isolation: isolate;
+  /* Keep a dark background for contrast, or remove if transparency is desired */
+
+  place-self: center;
+  place-content: center;
+  padding: .5em;
+  color: #ededed;
+  font: clamp(1em, 2vw + 2vh, 2em) sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
+  display: grid;
+}
+
+.glowing-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: -1em;
+  border: solid 1.25em;
+  border-image:
+    conic-gradient(from var(--a), #669900, #99cc33, #ccee66,
+      #006699, #3399cc, #990066, #cc3399,
+      #ff6600, #ff9900, #ffcc00, #669900) 1;
+  filter: blur(.75em);
+  animation: a 4s linear infinite;
+  content: '';
+}
+
+@keyframes a {
+  to {
+    --a: 1turn
+  }
+}
+
+/* Fluted Glass Effect Styles */
+@property --blink-opacity {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@keyframes blink-animation {
+
+  0%,
+  100% {
+    opacity: var(--blink-opacity, 1);
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes smoothBg {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.h1--scalingSize {
+  font-size: clamp(2rem, 8vw, 6rem);
+  /* Adjusted for better responsiveness */
+  position: relative;
+  isolation: isolate;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.h1--scalingSize::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: white;
+  text-shadow: 0 0 1px #ffffff;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: white;
+  -webkit-mask: linear-gradient(#000 0 0) luminance;
+  mask: linear-gradient(#000 0 0) luminance, alpha;
+  backdrop-filter: blur(19px) brightness(12.5);
+  -webkit-text-stroke: 1px white;
+  display: flex;
+  margin: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Icon Houdini Animation */
+.icon-houdini {
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
