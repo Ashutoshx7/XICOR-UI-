@@ -216,7 +216,6 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
           </motion.div>
         )}
       </AnimatePresence>
-      <Planet></Planet>
     </>
   )
 }
