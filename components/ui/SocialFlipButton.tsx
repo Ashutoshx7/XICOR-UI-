@@ -13,6 +13,7 @@ import {
   FaDiscord,
 } from "react-icons/fa";
 
+
 export interface SocialItem {
   letter: string;
   icon: React.ReactNode;

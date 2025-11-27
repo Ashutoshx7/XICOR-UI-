@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils"
 import ThemeToggle from "@/components/ui/ThemeToggle"
 import { motion, AnimatePresence } from "motion/react"
 import { useTheme } from "next-themes"
+import Planet from "@/components/ui/Planet";
+
 
 // Helper component for navigation links
 const NavLink = ({ href, icon: Icon, label }: { href: string; icon: React.ComponentType<{ className?: string }>; label: string }) => (
@@ -210,9 +212,11 @@ export function Navbar({ className, ...props }: React.HTMLAttributes<HTMLElement
                  </Link>
                </div>
              </nav>
+
           </motion.div>
         )}
       </AnimatePresence>
+      <Planet></Planet>
     </>
   )
 }

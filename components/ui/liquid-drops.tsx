@@ -78,7 +78,7 @@ export function LiquidDrops({
   if (!isMounted) return null
 
   return (
-    <div className={`relative w-full h-full ${className} bg-gray-800/50`}>
+    <div className={`relative w-full h-full ${className} `}>
       {/* SVG Filter Definition */}
       <svg className="hidden">
         <defs>
